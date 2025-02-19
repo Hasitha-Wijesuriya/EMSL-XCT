@@ -1,0 +1,4 @@
+NumPy
+scipy
+matplotlib == 3.4.2
+mbirjax
