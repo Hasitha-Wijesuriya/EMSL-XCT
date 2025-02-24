@@ -1,5 +1,5 @@
 # astra-toolbox::astra-toolbox
-# conda-forge::tomopy
+conda-forge::tomopy
 conda-forge::dxchange
 # conda-forge::svmbir
 conda-forge::scikit-image

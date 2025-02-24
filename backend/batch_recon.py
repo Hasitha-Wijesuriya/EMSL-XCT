@@ -1,5 +1,5 @@
 """
-ALS_batch_recon.py
+batch_recon.py
 Functions that used to either set up reconstruction batch jobs, or used within the batch jobs  
 """
 

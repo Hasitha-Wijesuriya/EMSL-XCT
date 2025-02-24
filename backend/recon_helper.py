@@ -1,7 +1,7 @@
 """
-ALS_recon_helper.py
+recon_helper.py
 Functions that control the layout and backend of main interactive parameter selcetion cell in ALS_recon.ipynb
-The distinction between these functions and those in ALS_recon_functons.py is a little arbitrary, maybe they should be reorganized
+The distinction between these functions and those in recon_functons.py is a little arbitrary, maybe they should be reorganized
 """
 
 import os

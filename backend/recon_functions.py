@@ -16,7 +16,7 @@ from scipy.fft import fft, ifft, fftfreq, fftshift
 from skimage import transform, io
 from os import path
 import tomopy
-import astra
+# import astra
 import dxchange
 import importlib
 # checks if svmbir is installed before importing (so users who install locally aren't required to install svmbir if they won't use it)
