@@ -16,6 +16,7 @@ from scipy.fft import fft, ifft, fftfreq, fftshift
 from skimage import transform, io
 from os import path
 import tomopy
+import lxml.etree as et
 # import astra
 import dxchange
 import importlib
@@ -23,6 +24,39 @@ import importlib
 svmbir_spec = importlib.util.find_spec("svmbir")
 if svmbir_spec is not None: # this 
     import svmbir
+
+def file_paths(file_path):
+    """returns file paths for the .xml, .ang and .tif files"""
+    xml_path = [f for f in os.listdir(file_path) if f.endswith('.xml')][0]
+    ang_path = [f for f in os.listdir(file_path) if f.endswith('.ang')][0]
+    tif_path = [f for f in os.listdir(file_path) if f.endswith('.tif')]
+    return xml_path, ang_path, tif_path
+
+
+def xml_parser(xml_path, *args):
+    """parses the .xml file and returns the values of the tags in the args list"""
+    info = []
+    tree = et.parse(xml_path)
+    root = tree.getroot()
+    for i, thing in enumerate(args):
+        info.append(root.find(thing).text)
+    return info
+
+def angel_parser(ang_path):
+    """parses the .ang file and returns the file names of 0 and 180 degree projections"""
+    angels = np.loadtxt(ang_path,skiprows=1,usecols=(1),delimiter='\t')
+    try:
+        index = np.where(angels == -360.000)
+        angel_0_proj= index[0][0]
+    except:
+        index = np.where(angels == -0.000)
+        angel_0_proj= index[0][0]
+
+    angel_180_proj = np.where(angels == -180.000)[0][0]
+
+    return angel_0_proj+1, angel_180_proj+1
+    
+    
 
 def check_for_gpu(verbose = False):
     """ Checks if GPU can be used for reconstruction """
@@ -294,7 +328,8 @@ def plot_0_and_180_proj_diff(first_proj,last_proj_flipped,init_cor=0,fignum=1,ys
     fig.canvas.toolbar_position = 'right'
     fig.canvas.header_visible = False
     shifted_last_proj = shift_projections(last_proj_flipped, 2*init_cor, yshift=0)
-    img = axs.imshow(first_proj - shifted_last_proj, cmap='gray',vmin=-.1,vmax=.1)
+    # img = axs.imshow(first_proj - shifted_last_proj, cmap='gray',vmin=-.1,vmax=.1)
+    img = axs.imshow(first_proj - shifted_last_proj, cmap='gray')
     plt.tight_layout()
 
     slider_dx = widgets.FloatSlider(description='Shift X', readout=True, min=-800, max=800, step=0.25, value=init_cor, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
@@ -321,7 +356,7 @@ def shift_projections(projs, COR, yshift=0):
     """
     translateFunction = transform.SimilarityTransform(translation=(-COR, yshift))
     if projs.ndim == 2:
-        shifted = transform.warp(projs, translateFunction)
+        shifted = transform.warp(projs.astype(np.float64), translateFunction)
     elif projs.ndim == 3:
         # Apply translation with interpolation to projection[n]
         shifted = np.asarray([transform.warp(proj, translateFunction) for proj in projs])

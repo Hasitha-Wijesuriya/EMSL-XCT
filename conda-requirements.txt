@@ -10,3 +10,4 @@ conda-forge::ipympl == 0.8.6
 conda-forge::numpy
 conda-forge::scipy
 conda-forge::ipykernel
+conda-forge::lxml
