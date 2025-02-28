@@ -332,8 +332,8 @@ def plot_0_and_180_proj_diff(first_proj,last_proj_flipped,init_cor=0,fignum=1,ys
     img = axs.imshow(first_proj - shifted_last_proj, cmap='gray')
     plt.tight_layout()
 
-    slider_dx = widgets.FloatSlider(description='Shift X', readout=True, min=-800, max=800, step=0.25, value=init_cor, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
-    slider_dy = widgets.FloatSlider(description='Shift Y', readout=True, min=-800, max=800, step=0.25, value=0, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
+    slider_dx = widgets.FloatSlider(description='Shift X', readout=True, min=-200, max=200, step=0.25, value=init_cor, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
+    slider_dy = widgets.FloatSlider(description='Shift Y', readout=True, min=-200, max=200, step=0.25, value=0, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
     # only show yshift slider if flag is True
     if yshift:
         ui = widgets.VBox([slider_dx, slider_dy])

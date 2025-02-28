@@ -30,6 +30,15 @@ The main script that contains the file selection, Centre of Rotation (CoR) calcu
 
 For the post processing steps those images can be stored as a image stack that can be processed by Avizo or ImageJ.
 
+### Selecting Data Folder
+
+After importing the necessary packages the user can select the Data folder which contains the projection images and the metadata files (i.e. .ang, .xml files) for the reconstruction. When you slect the data folder the scanning parameters are read by the support functions in the backend folder. 
+
+### Finding the Centre of Rotation (CoR)
+
+Once the user selects the Data folder they can auto calculate the CoR by selecting the first and last projection images. The user can also manually input the CoR using the slider bar on the widget. If the auto calculation is not accurate the user can manually adjust the CoR using the slider. The auto calulation is done by finding the maximum of the cross-correlation between the first and last projection images.
+
+### Reconstruction
 
 
 
