@@ -16,6 +16,8 @@ from scipy.fft import fft, ifft, fftfreq, fftshift
 from skimage import transform, io
 from os import path
 import tomopy
+import tifffile as tif
+from natsort import natsorted
 import lxml.etree as et
 # import astra
 import dxchange
@@ -56,7 +58,12 @@ def angel_parser(ang_path):
 
     return angel_0_proj+1, angel_180_proj+1
     
-    
+def proj_to_sino(folder_path):
+    """converts the .tif files to sinograms"""
+    tif_files = [f for f in os.listdir(folder_path) if f.lower().endswith('.tif')]
+    tif_files = natsorted(tif_files) 
+    sinogram = np.stack([tif.imread(os.path.join(folder_path, file)) for file in tif_files], axis=0).astype(np.float32)
+    return sinogram, sinogram.shape
 
 def check_for_gpu(verbose = False):
     """ Checks if GPU can be used for reconstruction """
@@ -332,8 +339,8 @@ def plot_0_and_180_proj_diff(first_proj,last_proj_flipped,init_cor=0,fignum=1,ys
     img = axs.imshow(first_proj - shifted_last_proj, cmap='gray')
     plt.tight_layout()
 
-    slider_dx = widgets.FloatSlider(description='Shift X', readout=True, min=-200, max=200, step=0.25, value=init_cor, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
-    slider_dy = widgets.FloatSlider(description='Shift Y', readout=True, min=-200, max=200, step=0.25, value=0, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
+    slider_dx = widgets.FloatSlider(description='Shift X', readout=True, min=-50, max=50, step=0.25, value=init_cor, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
+    slider_dy = widgets.FloatSlider(description='Shift Y', readout=True, min=-50, max=50, step=0.25, value=0, layout=widgets.Layout(width='50%'),continuous_update=continuous_update)
     # only show yshift slider if flag is True
     if yshift:
         ui = widgets.VBox([slider_dx, slider_dy])

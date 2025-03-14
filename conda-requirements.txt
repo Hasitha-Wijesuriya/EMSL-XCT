@@ -11,3 +11,4 @@ conda-forge::numpy
 conda-forge::scipy
 conda-forge::ipykernel
 conda-forge::lxml
+conda-forge::natsort
