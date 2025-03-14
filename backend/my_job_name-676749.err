@@ -1,0 +1,9 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+srun: error: t66: task 0: Exited with exit code 1
+srun: Terminating StepId=676749.0
+Traceback (most recent call last):
+  File "/home/wije370/EMSL-XCT/backend/mbirjax.py", line 2, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'

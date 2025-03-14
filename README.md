@@ -18,7 +18,7 @@ pip install -r pip-requirements.txt
 Then add the IPython kernel to Jupyter notebook:
 
 ```bash
-python -m ipykernel install --user --name=emsl-xct --display-name=emsl-xct"
+python -m ipykernel install --user --name=emsl-xct --display-name=emsl-xct
 
 ```
 
