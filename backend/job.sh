@@ -10,7 +10,7 @@
 #SBATCH --mail-user=hasitha.wijesuriya@pnnl.gov  # email user
 #SBATCH --mail-type END                        # when job ends
 
-module purge                                   # removes the default module set
+conda init                                  # removes the default module set
 conda activate emsl-xct
 
 srun python /home/wije370/EMSL-XCT/backend/mbirjax.py
