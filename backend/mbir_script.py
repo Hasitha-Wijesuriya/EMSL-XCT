@@ -24,7 +24,7 @@ cone_model = mbir.ConeBeamModel(sinogram_shape, angles, source_detector_dist=sou
 weights = cone_model.gen_weights(sinogram / sinogram.max(), weight_type='transmission_root')
 cone_model.set_params(sharpness=sharpness)
 print("######Printing Parameters############")
-print_params()
+cone_model.print_params()
 
 print('###################STARTING_RECON#####################')
 print('Starting recon')
