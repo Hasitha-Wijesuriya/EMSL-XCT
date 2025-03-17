@@ -10,7 +10,7 @@
 #SBATCH --mail-user=hasitha.wijesuriya@pnnl.gov  # email user
 #SBATCH --mail-type END                        # when job ends
 
-conda init bash                                  # removes the default module set
+source ~/venv/anaconda3/etc/profile.d/conda.sh                                 # removes the default module set
 conda activate emsl-xct
 
 srun python /home/wije370/EMSL-XCT/backend/mbir_script.py
