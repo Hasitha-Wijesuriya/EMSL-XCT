@@ -1,0 +1,12 @@
+
+CondaError: Run 'conda init' before 'conda activate'
+
+No GPU/TPU found, falling back to CPU. (Set TF_CPP_MIN_LOG_LEVEL=0 and rerun for more info.)
+Traceback (most recent call last):
+  File "/home/wije370/EMSL-XCT/backend/mbirjax.py", line 7, in <module>
+    import mbirjax as mbir
+  File "/home/wije370/EMSL-XCT/backend/mbirjax.py", line 23, in <module>
+    cone_model = mbir.ConeBeamModel(sinogram_shape, angles, source_detector_dist=source_detector_dist*voxel_size, source_iso_dist=source_iso_dist*voxel_size)
+AttributeError: partially initialized module 'mbirjax' has no attribute 'ConeBeamModel' (most likely due to a circular import)
+srun: error: t23: task 0: Exited with exit code 1
+srun: Terminating StepId=677228.0

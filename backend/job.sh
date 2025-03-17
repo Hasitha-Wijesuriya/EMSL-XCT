@@ -1,4 +1,4 @@
-#!/bin/csh
+#!/bin/bash
 
 #SBATCH --account emsl61599                    # charged account
 #SBATCH --time 0:21                           # 5 hour 0 minute time limit
@@ -10,7 +10,7 @@
 #SBATCH --mail-user=hasitha.wijesuriya@pnnl.gov  # email user
 #SBATCH --mail-type END                        # when job ends
 
-conda init                                  # removes the default module set
+conda init bash                                  # removes the default module set
 conda activate emsl-xct
 
 srun python /home/wije370/EMSL-XCT/backend/mbirjax.py

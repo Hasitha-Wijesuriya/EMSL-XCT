@@ -20,7 +20,7 @@ voxel_size = 0.0824724311200843 #mm
 angles = jnp.linspace(0, np.pi, 1600, endpoint=False)
 sinogram_shape = (1600, 2000, 2000)
 
-cone_model = mbirjax.ConeBeamModel(sinogram_shape, angles, source_detector_dist=source_detector_dist*voxel_size, source_iso_dist=source_iso_dist*voxel_size)
+cone_model = mbir.ConeBeamModel(sinogram_shape, angles, source_detector_dist=source_detector_dist*voxel_size, source_iso_dist=source_iso_dist*voxel_size)
 weights = cone_model.gen_weights(sinogram / sinogram.max(), weight_type='transmission_root')
 cone_model.set_params(sharpness=sharpness)
 print("######Printing Parameters############")
