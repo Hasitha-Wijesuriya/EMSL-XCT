@@ -11,6 +11,8 @@
 #SBATCH --mail-type END                        # when job ends
 
 source ~/venv/anaconda3/etc/profile.d/conda.sh                                 # removes the default module set
+conda deactivate
+conda deactivate
 conda activate emsl-xct
 
 srun python /home/wije370/EMSL-XCT/backend/mbir_script.py
