@@ -33,5 +33,5 @@ recon, recon_params = cone_model.recon(sinogram, weights=weights)
 
 recon.block_until_ready()
 elapsed = time.time() - time0
-tif.imwrite(outpath+'recon.tif',recon)
+tif.imwrite(out_path+'recon.tif',recon)
 print('#########################END##########################')
