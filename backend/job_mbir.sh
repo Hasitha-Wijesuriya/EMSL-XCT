@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #SBATCH --account emsl61599                    # charged account
-#SBATCH --time 0:21                           # 5 hour 0 minute time limit
-#SBATCH --nodes 1                              # 2 nodes
-#SBATCH --ntasks-per-node 1                   # 36 processes on each node
+#SBATCH --gres=<gpu:2>
+#SBATCH --time 120                           # 2 hour 0 minute time limit
+#SBATCH --nodes 1                              # 1 nodes
 #SBATCH --job-name mbirjax                 # job name in queue (``squeue``)
 #SBATCH --error my_job_name-%j.err             # stderr file with job_name-job_id.err
 #SBATCH --output my_job_name-%j.out            # stdout file
