@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --account emsl61599                    # charged account
-#SBATCH --gres=<gpu:2>
+#SBATCH --gres=gpu:2
 #SBATCH --time 120                           # 2 hour 0 minute time limit
 #SBATCH --nodes 1                              # 1 nodes
 #SBATCH --job-name mbirjax                 # job name in queue (``squeue``)
