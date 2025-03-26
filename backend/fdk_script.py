@@ -22,7 +22,7 @@ angles = jnp.linspace(0, 2*np.pi, 1600, endpoint=False)
 sinogram_shape = (1600, 2000, 2000)
 
 cone_model = mbir.ConeBeamModel(sinogram_shape, angles, source_detector_dist=source_detector_dist/voxel_size, source_iso_dist=source_iso_dist/voxel_size)
-cone_model.set_params(det_channel_offset=COR, verbose=1)
+cone_model.set_params(recon_shape= (1000,1000,1000), det_channel_offset=COR, verbose=1)
 
 print("######Printing Parameters############")
 cone_model.print_params()
@@ -30,6 +30,7 @@ cone_model.print_params()
 print('###################STARTING_RECON#####################')
 
 time0 = time.time()
+print(time0)
 recon = cone_model.fdk_recon(sinogram, filter_name="ramp")
 
 recon.block_until_ready()

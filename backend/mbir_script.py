@@ -5,13 +5,13 @@ import sys
 import tifffile as tif
 import time
 import mbirjax as mbir
-import tomopy
+# import tomopy
 import jax.numpy as jnp
 
 out_path = "/pscratch/sd/h/hasitha/emsl/out/"
 print("##########starting##############")
 sinogram = tif.imread("/pscratch/sd/h/hasitha/emsl/sino.tif")
-tomopy.minus_log(sinogram, out=sinogram)
+# tomopy.minus_log(sinogram, out=sinogram)
 sharpness = -1.0
 COR = 11.75 # pixel
 source_detector_dist = 870.86 # mm
