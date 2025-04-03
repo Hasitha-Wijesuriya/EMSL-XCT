@@ -1,0 +1,21 @@
+0: 3.12.9 | packaged by conda-forge | (main, Mar  4 2025, 22:48:41) [GCC 13.3.0]
+0: ##########starting##############
+0: Available GPU memory = 29.536GB.
+0: Estimated memory required = 381.531GB full, 160.994GB update
+0: /global/homes/h/hasitha/.conda/envs/mbirjax/lib/python3.12/site-packages/mbirjax/tomography_model.py:142: UserWarning: Problem is likely too large for available memory.
+0: Estimated memory required = 381.531GB.  Available:  CPU = 169.185GB, GPU = 29.536GB.
+0:   warnings.warn(message)
+0: Traceback (most recent call last):
+0:   File "/global/u1/h/hasitha/EMSL-XCT/backend/mbir_script.py", line 24, in <module>
+0:     cone_model = mbir.ConeBeamModel(sinogram_shape, angles, source_detector_dist=source_detector_dist/voxel_size, source_iso_dist=source_iso_dist/voxel_size)
+0:                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+0:   File "/global/homes/h/hasitha/.conda/envs/mbirjax/lib/python3.12/site-packages/mbirjax/cone_beam.py", line 53, in __init__
+0:     super().__init__(sinogram_shape, view_params_array=view_params_array,
+0:   File "/global/homes/h/hasitha/.conda/envs/mbirjax/lib/python3.12/site-packages/mbirjax/tomography_model.py", line 52, in __init__
+0:     self.set_devices_and_batch_sizes()
+0:   File "/global/homes/h/hasitha/.conda/envs/mbirjax/lib/python3.12/site-packages/mbirjax/tomography_model.py", line 149, in set_devices_and_batch_sizes
+0:     print('Using {} for main memory, {} as worker.'.format(main_device, worker))
+0:                                                            ^^^^^^^^^^^
+0: UnboundLocalError: cannot access local variable 'main_device' where it is not associated with a value
+srun: error: nid001697: task 0: Exited with exit code 1
+srun: Terminating StepId=37259776.0

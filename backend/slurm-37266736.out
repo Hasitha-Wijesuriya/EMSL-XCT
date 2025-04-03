@@ -1,0 +1,44 @@
+srun: Job step's --cpus-per-task value exceeds that of job (256 > 1). Job step may never run.
+0: 3.12.9 | packaged by conda-forge | (main, Mar  4 2025, 22:48:41) [GCC 13.3.0]
+0: ##########starting##############
+0: Estimated memory required = 389.282GB full, 160.994GB update
+0: Using TFRT_CPU_0 for main memory, TFRT_CPU_0 as worker.
+0: views_per_batch = 256; pixels_per_batch = 2048
+0: Estimated memory required = 389.282GB full, 160.994GB update
+0: Using TFRT_CPU_0 for main memory, TFRT_CPU_0 as worker.
+0: views_per_batch = 256; pixels_per_batch = 2048
+0: ######Printing Parameters############
+0: ----
+0: geometry_type = <class 'mbirjax.cone_beam.ConeBeamModel'>
+0: file_format = 1.0
+0: sinogram_shape = (1600, 2000, 2000)
+0: delta_det_channel = 1.0
+0: delta_det_row = 1.0
+0: det_row_offset = 0.0
+0: det_channel_offset = 11.75
+0: sigma_y = 1.0
+0: recon_shape = (2000, 2000, 2000)
+0: delta_voxel = 0.412362142519544
+0: sigma_x = 1.0
+0: sigma_prox = 1.0
+0: p = 2.0
+0: q = 1.2
+0: T = 1.0
+0: qggmrf_nbr_wts = [1.0, 1.0, 1.0]
+0: auto_regularize_flag = True
+0: positivity_flag = False
+0: snr_db = 30.0
+0: sharpness = -1.0
+0: granularity = [1, 2, 4, 8, 16, 32, 64, 128]
+0: partition_sequence = [0, 1, 2, 3, 4, 5, 6, 7]
+0: verbose = 1
+0: use_gpu = automatic
+0: source_detector_dist = 10559.407406482063
+0: source_iso_dist = 4354.299861873685
+0: recon_slice_offset = 0.0
+0: ----
+0: ###################STARTING_RECON#####################
+0: Starting recon
+0: Computing Hessian diagonal
+0: slurmstepd: error: *** STEP 37266736.0 ON nid004797 CANCELLED AT 2025-03-28T23:19:52 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 37266736 ON nid004797 CANCELLED AT 2025-03-28T23:19:52 DUE TO TIME LIMIT ***

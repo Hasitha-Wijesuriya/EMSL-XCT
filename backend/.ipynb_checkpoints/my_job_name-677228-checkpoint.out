@@ -1,0 +1,17 @@
+no change     /home/wije370/venv/anaconda3/condabin/conda
+no change     /home/wije370/venv/anaconda3/bin/conda
+no change     /home/wije370/venv/anaconda3/bin/conda-env
+no change     /home/wije370/venv/anaconda3/bin/activate
+no change     /home/wije370/venv/anaconda3/bin/deactivate
+no change     /home/wije370/venv/anaconda3/etc/profile.d/conda.sh
+no change     /home/wije370/venv/anaconda3/etc/fish/conf.d/conda.fish
+no change     /home/wije370/venv/anaconda3/shell/condabin/Conda.psm1
+no change     /home/wije370/venv/anaconda3/shell/condabin/conda-hook.ps1
+no change     /home/wije370/venv/anaconda3/lib/python3.12/site-packages/xontrib/conda.xsh
+no change     /home/wije370/venv/anaconda3/etc/profile.d/conda.csh
+no change     /home/wije370/.bashrc
+No action taken.
+3.8.18 | packaged by conda-forge | (default, Dec 23 2023, 17:21:28) 
+[GCC 12.3.0]
+3.8.18 | packaged by conda-forge | (default, Dec 23 2023, 17:21:28) 
+[GCC 12.3.0]

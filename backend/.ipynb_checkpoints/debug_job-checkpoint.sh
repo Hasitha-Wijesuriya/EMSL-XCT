@@ -5,12 +5,12 @@
 #SBATCH -N 1
 #SBATCH -C gpu&hbm80g 
 #SBATCH -G 1
-#SBATCH -q premium
-#SBATCH -J mbirjax1
+#SBATCH -q debug
+#SBATCH -J mbirjax_debug
 #SBATCH --mail-user=hasitha@berkeley.edu
 #SBATCH --mail-type=ALL
 #SBATCH -A als
-#SBATCH -t 10:0:0
+#SBATCH -t 00:30:00
 
 
 module load python

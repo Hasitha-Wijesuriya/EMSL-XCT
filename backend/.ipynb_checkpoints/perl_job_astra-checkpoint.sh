@@ -6,11 +6,11 @@
 #SBATCH -C gpu&hbm80g 
 #SBATCH -G 1
 #SBATCH -q premium
-#SBATCH -J mbirjax1
+#SBATCH -J astra_fdk
 #SBATCH --mail-user=hasitha@berkeley.edu
 #SBATCH --mail-type=ALL
 #SBATCH -A als
-#SBATCH -t 10:0:0
+#SBATCH -t 05:0:0
 
 
 module load python
@@ -18,4 +18,4 @@ conda activate mbirjax
 
 #run the application: 
 # applications may perform better with --gpu-bind=none instead of --gpu-bind=single:1
-srun -n 1 -c 128 -l -u python /global/u1/h/hasitha/EMSL-XCT/backend/mbir_script.py
+srun -n 1 -c 128 -l -u python /global/u1/h/hasitha/EMSL-XCT/backend/astra_fdk.py
