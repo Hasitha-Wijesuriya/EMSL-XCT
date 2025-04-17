@@ -1,0 +1,7 @@
+0: /global/u1/h/hasitha/EMSL-XCT/backend/astra_fdk.py:22: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
+0:   im = imread(os.path.join(input_dir, f'61273 Yang_MONet Core 1 A bot_{i:04d}.tif')).astype(np.float32)
+0: #######running FDK##########
+0: #######finnished FDK##########
+0: slurmstepd: error: *** STEP 37462584.0 ON nid008441 CANCELLED AT 2025-04-04T17:23:37 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 37462584 ON nid008441 CANCELLED AT 2025-04-04T17:23:37 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.

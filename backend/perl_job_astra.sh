@@ -10,7 +10,7 @@
 #SBATCH --mail-user=hasitha@berkeley.edu
 #SBATCH --mail-type=ALL
 #SBATCH -A als
-#SBATCH -t 05:0:0
+#SBATCH -t 00:20:00
 
 
 module load python

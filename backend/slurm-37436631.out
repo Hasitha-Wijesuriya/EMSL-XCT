@@ -1,0 +1,24 @@
+0: /global/u1/h/hasitha/EMSL-XCT/backend/astra_fdk.py:22: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
+0:   im = imread(os.path.join(input_dir, f'61273 Yang_MONet Core 1 A bot_{i:04d}.tif')).astype(np.float32)
+0: #######running FDK##########
+0: Error: allocateProjectionData 3D: CUDA error 2: out of memory.
+0: Error: Failed to allocate 2000x1600x2000 GPU buffer
+0: Error: zeroProjectionData 3D: CUDA error 1: invalid argument.
+0: Error: allocateProjectionData 3D: CUDA error 2: out of memory.
+0: Error: Failed to allocate 2000x1600x2000 GPU buffer
+0: Error: zeroProjectionData 3D: CUDA error 1: invalid argument.
+0: Error: zeroProjectionData 3D: CUDA error 1: invalid argument.
+0: Error: allocateVolumeArray 3D: CUDA error 2: out of memory.
+0: Error: Failed to allocate 2000x2000x2000 GPU array
+0: Error: processSino3D: CUDA error 700: an illegal memory access was encountered.
+0: Error: zeroVolumeData 3D: CUDA error 700: an illegal memory access was encountered.
+0: Error: StreamHelper create: CUDA error 700: an illegal memory access was encountered.
+0: Error: allocateProjectionArray 3D: CUDA error 700: an illegal memory access was encountered.
+0: Error: Failed to allocate 2000x1600x2000 GPU array
+0: Error: StreamHelper create: CUDA error 700: an illegal memory access was encountered.
+0: Error: StreamHelper create: CUDA error 700: an illegal memory access was encountered.
+0: Error: allocateVolumeData 3D: CUDA error 700: an illegal memory access was encountered.
+0: Error: Failed to allocate 2000x2000x2000 GPU buffer
+0: python: ./../../src/CudaSirtAlgorithm3D.cpp:213: virtual bool astra::CCudaSirtAlgorithm3D::run(int): Assertion `ok' failed.
+srun: error: nid008353: task 0: Aborted
+srun: Terminating StepId=37436631.0

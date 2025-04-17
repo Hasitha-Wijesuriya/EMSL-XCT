@@ -11,30 +11,65 @@ detector_pixel_size = 0.2  # Detector pixel size (mm)
 detector_rows = 2000  # Number of detector rows (pixels)
 detector_cols = 2000  # Number of detector columns (pixels)
 num_of_projections = 1600  # Number of projections
-angles = np.linspace(0, 2 * np.pi, num=num_of_projections, endpoint=False)  # Projection angles
+# angles = -np.linspace(0, 2 * np.pi, num=num_of_projections, endpoint=False)  # Projection angles
 
 input_dir = '/pscratch/sd/h/hasitha/emsl/projections/'  # Directory containing projection images
-output_dir = '/pscratch/sd/h/hasitha/emsl/out/'  # Directory to save reconstructed slices
+output_dir = '/pscratch/sd/h/hasitha/emsl/out_astra_fdk_3/'  # Directory to save reconstructed slices
+angle_path = '/pscratch/sd/h/hasitha/emsl/61273 Yang_MONet Core 1 A bot.ang'
+
+angles_degrees = np.loadtxt(angle_path,skiprows=1,usecols=(1),delimiter='\t')
+angles = np.deg2rad(angles_degrees)
 
 # Load projections 61273 Yang_MONet Core 1 A bot_0001.tif
 projections = np.zeros((detector_rows, num_of_projections, detector_cols), dtype=np.float32)
 for i in range(1,num_of_projections+1):
     im = imread(os.path.join(input_dir, f'61273 Yang_MONet Core 1 A bot_{i:04d}.tif')).astype(np.float32)
-    im /= np.max(im)  # Normalize the image
+    # im /= np.max(im)  # Normalize the image
     projections[:, i-1, :] = im
 
+
+projections /= np.max(projections) # Normalize the image
+# projections = np.clip(projections, 1e-6, None)
+projections = -np.log(projections)
+
 # Create ASTRA projection geometry
+# proj_geom = astra.create_proj_geom(
+#     'cone',
+#     1, 1,
+#     detector_rows, detector_cols,
+#     angles,
+#     (distance_source_origin + distance_origin_detector) / detector_pixel_size,
+#     0
+# )
+
+#################For moving the detector to origin################################
+detector_pixel_size_in_origin = detector_pixel_size * distance_source_origin / (distance_source_origin + distance_origin_detector)
+
 proj_geom = astra.create_proj_geom(
     'cone',
     1, 1,
     detector_rows, detector_cols,
     angles,
-    (distance_source_origin + distance_origin_detector) / detector_pixel_size,
+    distance_source_origin / detector_pixel_size_in_origin,
     0
 )
+####################################################################################
+
+
+#################Detector at the same position as in the system################################
+# proj_geom = astra.create_proj_geom(
+#     'cone',
+#     0.2, 0.2,
+#     detector_rows, detector_cols,
+#     angles,
+#     distance_source_origin,
+#     distance_origin_detector
+# )
+################################################################################################
+
 
 # Apply the center of rotation correction
-proj_geom = astra.geom_postalignment(proj_geom, factor=(11.25)) #passing the COR offset
+proj_geom = astra.geom_postalignment(proj_geom, factor=(-9)) #passing the COR offset had 8.25
 
 # Create ASTRA data object for projections
 projections_id = astra.data3d.create('-sino', proj_geom, projections)
@@ -60,9 +95,9 @@ print("#######finnished FDK##########")
 reconstruction = astra.data3d.get(reconstruction_id)
 
 # Post-processing: Set negative values to zero and normalize
-reconstruction[reconstruction < 0] = 0
+# reconstruction[reconstruction < 0] = 0
 reconstruction /= np.max(reconstruction)
-reconstruction = np.round(reconstruction * 255).astype(np.uint8)
+# reconstruction = np.round(reconstruction * 255).astype(np.uint8)
 
 # Save the reconstructed slices
 if not os.path.exists(output_dir):
@@ -73,7 +108,6 @@ tiff.imwrite(os.path.join(output_dir, f'reconstruction_full.tif'), reconstructio
 
 for i in range(detector_rows):
     im = reconstruction[i, :, :]
-    im = np.flipud(im)  # Flip the image vertically
     imwrite(os.path.join(output_dir, f'reco{i:04d}.tif'), im)
 
 # Cleanup

@@ -1,0 +1,6 @@
+0: Traceback (most recent call last):
+0:   File "/global/u1/h/hasitha/EMSL-XCT/backend/tigre_fdk.py", line 5, in <module>
+0:     from tigre.utilities import geometries
+0: ImportError: cannot import name 'geometries' from 'tigre.utilities' (/global/homes/h/hasitha/.conda/envs/tigre/lib/python3.10/site-packages/tigre/utilities/__init__.py)
+srun: error: nid008385: task 0: Exited with exit code 1
+srun: Terminating StepId=37460360.0
